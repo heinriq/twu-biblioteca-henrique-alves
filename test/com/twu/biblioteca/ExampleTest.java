@@ -171,4 +171,41 @@ public class ExampleTest {
 
         assertThat(outContent.toString(), is(equalTo(message)));
     }
+
+    @Test
+    public void aFailureMessageMustBeShowedWhenABookIsCheckedOut() {
+        Book book = new Book();
+        book.setCheckOut(true);
+
+        book.setCheckOut(true);
+        String message = "Thank you! Enjoy the book\nSorry, that book is not available\n";
+
+        assertThat(outContent.toString(), is(equalTo(message)));
+    }
+
+    @Test
+    public void BookMustBeReturned() {
+        Book book = new Book();
+        book.setCheckOut(true);
+        book.setCheckOut(false);
+
+        assertThat(book.getCheckOut(), is(false));
+    }
+
+    @Test
+    public void returnedBookMustBeListed() {
+        books.get(1).setCheckOut(true);
+        books.get(1).setCheckOut(false);
+
+        String response = "Thank you! Enjoy the book\n";
+        for(int i=0;i<books.size(); i++) {
+            response += books.get(i).getTitle() + "\n";
+        }
+
+        BibliotecaApp bibliotecaApp = new BibliotecaApp();
+        bibliotecaApp.setBooks(books);
+        bibliotecaApp.listAllBooks();
+
+        assertThat(outContent.toString(), is(equalTo(response)));
+    }
 }
