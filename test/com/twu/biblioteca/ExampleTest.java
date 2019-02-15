@@ -218,4 +218,14 @@ public class ExampleTest {
 
         assertThat(outContent.toString(), is(equalTo(message)));
     }
+
+    @Test
+    public void onUnsuccessfulReturnANotificationMustBeShowed() {
+        Book book = new Book();
+        book.setTitle("Leviatan");
+        book.setCheckOut(false);
+        String message = "This is not a valid book to return\n";
+
+        assertThat(outContent.toString(), is(equalTo(message)));
+    }
 }
