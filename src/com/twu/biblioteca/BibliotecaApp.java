@@ -33,7 +33,10 @@ public class BibliotecaApp {
 
     public void listAllBooks() {
         for(int i=0; i<this.books.size(); i++) {
-            System.out.println(this.books.get(i).getTitle());
+            boolean available = !this.books.get(i).getCheckOut();
+            if (available) {
+                System.out.println(this.books.get(i).getTitle());
+            }
         }
     }
 }

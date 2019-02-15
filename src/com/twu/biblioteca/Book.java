@@ -5,6 +5,11 @@ public class Book {
     private String title;
     private int publicationYear;
     private String author;
+    private boolean checkOut;
+
+    public void Book() {
+        this.checkOut = false;
+    }
 
     public void setTitle(String title) { this.title = title; }
 
@@ -25,4 +30,8 @@ public class Book {
     public String getAuthor() {
         return this.author;
     }
+
+    public void setCheckOut(boolean checkOut) { this.checkOut = checkOut; }
+
+    public boolean getCheckOut() { return this.checkOut; }
 }
