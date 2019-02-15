@@ -197,7 +197,7 @@ public class ExampleTest {
         books.get(1).setCheckOut(true);
         books.get(1).setCheckOut(false);
 
-        String response = "Thank you! Enjoy the book\n";
+        String response = "Thank you! Enjoy the book\nThank you for returning the book\n";
         for(int i=0;i<books.size(); i++) {
             response += books.get(i).getTitle() + "\n";
         }
@@ -207,5 +207,15 @@ public class ExampleTest {
         bibliotecaApp.listAllBooks();
 
         assertThat(outContent.toString(), is(equalTo(response)));
+    }
+
+    @Test
+    public void notificationForSuccessMustBeReturned() {
+        Book book = new Book();
+        book.setCheckOut(true);
+        book.setCheckOut(false);
+        String message = "Thank you! Enjoy the book\nThank you for returning the book\n";
+
+        assertThat(outContent.toString(), is(equalTo(message)));
     }
 }

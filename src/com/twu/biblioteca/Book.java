@@ -38,8 +38,12 @@ public class Book {
         }
 
         this.checkOut = checkOut;
+
         if (this.checkOut) {
             System.out.println("Thank you! Enjoy the book");
+        }
+        if (!this.checkOut) {
+            System.out.println("Thank you for returning the book");
         }
     }
 
