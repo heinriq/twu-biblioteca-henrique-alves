@@ -20,21 +20,23 @@ public class ExampleTest {
     }
 
     @Before
-    public void BooksMustBeAddedWithGameOfThronesTitles() {
+    public void setBooksWithGameOfThronesMetaData() {
         for (int volume=1; volume<=7; volume++) {
             Book book = new Book();
             book.setTitle("Game of Thrones vol: " + volume);
+            book.setPublicationYear(1995 + volume);
+            book.setAuthor("George R. R. Martin");
             books.add(book);
         }
     }
 
     @Test
-    public void test() {
+    public void oneMustBeEqualOne() {
         assertEquals(1, 1);
     }
 
     @Test
-    public void WelcomeMessageMustBeTheOneStopShop() {
+    public void welcomeMessageMustBeTheOneStopShop() {
         BibliotecaApp biblioteca = new BibliotecaApp();
         biblioteca.main(null);
         String welcomeMessage = "Welcome to Biblioteca. Your one-stop-shop for great books titles in Bangalore!\n";
@@ -42,7 +44,7 @@ public class ExampleTest {
     }
 
     @Test
-    public void BookMustBeGameOfThrones() {
+    public void bookMustBeGameOfThrones() {
         Book book = new Book();
         book.setTitle("Game of Thrones");
         String title = "Game of Thrones";
@@ -60,5 +62,35 @@ public class ExampleTest {
         for(int volume=0; volume<7; volume++) {
             assertThat("Game of Thrones vol: " + (volume + 1), is(equalTo(books.get(volume).getTitle())));
         }
+    }
+
+    @Test
+    public void publicationYearOfAFirstBookMustBe1996(){
+        int year = 1996;
+        Book book = new Book();
+        book.setTitle("Game of Thrones vol: 1");
+        book.setPublicationYear(year);
+
+        assertThat(year, is(equalTo(book.getPublicationYear())));
+    }
+
+    @Test
+    public void authorOfBookMustBeGeorgeRRMartin(){
+        String author = "George R. R. Martin";
+        Book book = new Book();
+        book.setAuthor(author);
+
+        assertThat(author, is(equalTo(book.getAuthor())));
+    }
+
+    @Test
+    public void authorOfAllGameOfThronesMustBeGeorgeRRMartinAndYearMutBe1996PlusVolumeNumber() {
+        int firstYear = 1996;
+        String author = "George R. R. Martin";
+        for (int volume = 0; volume < 7; volume++) {
+            assertThat(firstYear + volume, is(equalTo(books.get(volume).getPublicationYear())));
+            assertThat(author, is(equalTo(books.get(volume).getAuthor())));
+        }
+
     }
 }
