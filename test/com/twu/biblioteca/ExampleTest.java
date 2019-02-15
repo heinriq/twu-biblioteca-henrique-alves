@@ -117,4 +117,15 @@ public class ExampleTest {
         assertThat(outContent.toString(), is(equalTo(listBooks)));
 
     }
+
+    @Test
+    public void selectAValidOption() {
+        BibliotecaApp bibliotecaApp = new BibliotecaApp();
+        bibliotecaApp.setBooks(books);
+        bibliotecaApp.selectOption(999);
+
+        String message = "Please select a valid option!\n";
+
+        assertThat(outContent.toString(), is(equalTo(message)));
+    }
 }
