@@ -119,12 +119,23 @@ public class ExampleTest {
     }
 
     @Test
-    public void selectAValidOption() {
+    public void messageForInvalidOptionMustBeShowed() {
         BibliotecaApp bibliotecaApp = new BibliotecaApp();
         bibliotecaApp.setBooks(books);
         bibliotecaApp.selectOption(999);
 
         String message = "Please select a valid option!\n";
+
+        assertThat(outContent.toString(), is(equalTo(message)));
+    }
+
+    @Test
+    public void applicationMustBeQuited() {
+        BibliotecaApp bibliotecaApp = new BibliotecaApp();
+        bibliotecaApp.setBooks(books);
+        bibliotecaApp.selectOption(0);
+
+        String message = "Exiting application.\n";
 
         assertThat(outContent.toString(), is(equalTo(message)));
     }

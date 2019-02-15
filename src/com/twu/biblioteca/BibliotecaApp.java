@@ -20,6 +20,9 @@ public class BibliotecaApp {
 
     public void selectOption(int option) {
         switch (option) {
+            case 0:
+                System.out.println("Exiting application.");
+                break;
             case 1:
                 listAllBooks();
                 break;
