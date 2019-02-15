@@ -31,7 +31,10 @@ public class Book {
         return this.author;
     }
 
-    public void setCheckOut(boolean checkOut) { this.checkOut = checkOut; }
+    public void setCheckOut(boolean checkOut) {
+        this.checkOut = checkOut;
+        if (this.checkOut) { System.out.println("Thank you! Enjoy the book"); }
+    }
 
     public boolean getCheckOut() { return this.checkOut; }
 }
