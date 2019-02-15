@@ -93,4 +93,28 @@ public class ExampleTest {
         }
 
     }
+
+    @Test
+    public void firstOptionFromMenuMustBeShowed(){
+        BibliotecaApp bibliotecaApp = new BibliotecaApp();
+        String menuList = "1: List all books\n";
+        bibliotecaApp.printMenu();
+        assertThat(outContent.toString(), is(equalTo(menuList)));
+
+    }
+
+    @Test
+    public void testSelectListAllBooksOption() {
+        BibliotecaApp bibliotecaApp = new BibliotecaApp();
+        bibliotecaApp.setBooks(books);
+        bibliotecaApp.selectOption(1);
+        String listBooks = "";
+
+        for(int i=0;i<books.size();i++) {
+            listBooks += books.get(i).getTitle() + "\n";
+        }
+
+        assertThat(outContent.toString(), is(equalTo(listBooks)));
+
+    }
 }
